@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_scripts %}
+<script src="{% static 'lib/htmx.org/dist/htmx.js' %}"></script>
+<script src="{% static 'lib/htmx.org/dist/ext/ws.js' %}"></script>
+<script src="{% static 'js/tr.js' %}"></script>
+<script src="{% static 'lib/adapter/adapter-latest.js' %}"></script>
+{% endblock page_scripts %}
+{% block app_content %}
+<div id="websocket-div" ws-connect="/ws/lobby/" hx-ext="tr-ext, ws">
+  <main class="videoContent">
+    <div id="videos" class="row">
+      <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2">
+        <button class="join" type="button" id="call-button" hx-on:click="handleCallButton(event)">Join Call</button>
+        <div id="header">
+        </div>
+        <div id="self-div">
+          <figure id="self">
+            <video autoplay muted playsinline poster="{% static 'img/placeholder.png' %}"></video>
+            <figcaption>You</figcaption>
+          </figure>
+          <button aria-label="Toggle camera" role="switch" aria-checked="true"
+              type="button" id="toggle-cam" hx-on:click="toggleCam(event)">Cam</button>
+          <div class="row" style="margin-top: 10px;">
+            <form method="post" action="/logout/">
+              {% csrf_token %}
+              <button type="submit">Log out</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-md-9 col-lg-9 col-xl-10">
+        <div id="others" class="row">
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="{% static 'js/client.js' %}"></script>
+{% endblock app_content %}

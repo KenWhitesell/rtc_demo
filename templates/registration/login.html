@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block app_content %}
+There is no real security on this site.<br/>
+<br/>
+Pick any screen name you wish to use for the "First name" field.<br/>
+<br/>
+Please supply your real name in the "Real name" field.<br/>
+<br/>
+If you get disconnected and wish to reconnect, the "First name" you use<br/>
+must be the same "First name" that you previously used with your "Real name".<br/>
+(In other words, the "First name" must match the "Real name" when initially created.)<br/>
+<br/><br/>
+<form method="post">
+{% csrf_token %}
+
+<div class="col-sm-4">
+  {{ form | crispy }}
+</div>
+<br>
+<input type="submit" value="login">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+<br>
+<br>
+
+{% endblock %}

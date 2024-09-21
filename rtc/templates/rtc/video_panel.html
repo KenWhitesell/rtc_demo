@@ -1,0 +1,9 @@
+{% load static %}
+<div id="others" hx-swap-oob="beforeend">
+  <div id="{{id}}-div" class="col-sm-7 col-md-5 col-lg-4 col-xl-3">
+      <figure id="{{id}}">
+        <video autoplay playsinline poster="{% static 'img/placeholder.png' %}"></video>
+        <figcaption>{{user_name}}</figcaption>
+      </figure>
+  </div>
+</div>

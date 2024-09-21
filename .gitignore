@@ -1,0 +1,14 @@
+.settings
+.project
+.pydevproject
+.env
+*.pyc
+*.pyo
+.vscode
+!__init__.py
+.code-workspace.code-workspace
+.workspace.code-workspace
+workspace.code-workspace
+__pycache__
+db.sqlite3
+

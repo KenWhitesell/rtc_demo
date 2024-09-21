@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebRTC Demo</title>
+    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" type="text/css" rel="stylesheet">
+    {% block page_scripts %}
+    {% endblock page_scripts %}
+</head>
+<body>
+    <div class="container" id="appContent">
+        <div class="row"><div class="offset-sm-2 col-sm-9"><h2>WebRTC Demo</h2></div></div>
+        {% block app_content %}
+        {% endblock app_content %}
+    </div>
+</body>
+</html>
